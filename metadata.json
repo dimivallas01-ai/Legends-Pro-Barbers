@@ -1,0 +1,7 @@
+{
+  "name": "Legends Barber",
+  "description": "A premium, high-converting website for a modern barbershop featuring an AI-powered hairstyle consultant and seamless service browsing.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
