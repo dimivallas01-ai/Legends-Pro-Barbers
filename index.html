@@ -9,6 +9,31 @@
 <body class="bg-[#0a0a0a] text-gray-100">
   <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
+  const form = document.getElementById("booking-form");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const formData = {
+    name: form.name.value,
+    email: form.email.value,
+    appointment: form.appointment.value
+  };
+
+  const response = await fetch("/api/sendBookingEmail", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(formData)
+  });
+
+  const result = await response.json();
+  if (response.ok) {
+    alert("Booking confirmed! Check your email.");
+    form.reset();
+  } else {
+    alert("Error sending booking: " + result.error);
+  }
+});
 </body>
 </html>
 <form id="booking-form">
